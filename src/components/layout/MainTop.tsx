@@ -5,6 +5,7 @@ import logoCompany from '../../assets/images/logo-company.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import the icons you need
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 interface MainTopProps {
   pageTitle: string;
@@ -16,15 +17,18 @@ const MainTop: React.FC<MainTopProps> = ({ pageTitle }) => (
         <img src={logoCompany} width={'125px'} height={'70px'} className="logo" alt="Vite logo" />
       </div>
       <nav className="main-nav">
-        <a href="/">Home</a>
-        <a href="/">Usuários</a>
-        <a href="/">Produtos</a>
-        <a href="/">
-          <FontAwesomeIcon icon={faSearch} style={{ fontSize: 16, color: '#e4e4e4' }} className="text-center" />
-          {/* <FontAwesomeIcon icon="fas fa-search" /> */}
-          {/* <FontAwesomeIcon icon="fa fa-facebook" /> */}
-        </a>
+        <div className="nav-collapsed-menu">
+          <FontAwesomeIcon icon={faBars} className="text-center" />
+        </div>
+        <div className="nav-options">
+          <a href="/">Home</a>
+          <a href="/">Usuários</a>
+          <a href="/">Produtos</a>
+        </div>
       </nav>
+      <div className="main-search">
+        <FontAwesomeIcon icon={faSearch} className="text-center" />
+      </div>
     </div>
     <h1 className="page-title">{pageTitle}</h1>
   </header>
