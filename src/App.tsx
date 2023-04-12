@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios, { AxiosError } from './libs/axios';
 import useSWR, { SWRResponse } from 'swr';
 import './App.css';
@@ -8,8 +8,6 @@ import { userData } from './types';
 import ListUsersCards from './components/user/ListUsersCards';
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   const getUsersUrl = 'https://fakerapi.it/api/v1/users?_quantity=20&_gender=male&_seed=1';
 
   const getUsers = () => {
@@ -26,19 +24,6 @@ const App = () => {
   };
 
   const { data: usersData, error: getUsersError }: SWRResponse<userData[], AxiosError> = useSWR(getUsersUrl, getUsers);
-
-  // debugs
-  useEffect(() => {
-    console.log('start');
-  }, []);
-  useEffect(() => {
-    console.log('typeof usersData: ', typeof usersData);
-    console.log('usersData: ', usersData);
-  }, [usersData]);
-  useEffect(() => {
-    console.log('typeof getUsersError: ', typeof getUsersError);
-    console.log('getUsersError: ', getUsersError);
-  }, [getUsersError]);
 
   return (
     <div className="main-app">
